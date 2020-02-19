@@ -81,6 +81,8 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
+
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -149,12 +151,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-//             release {
-// keyAlias 'spaze'
-// keyPassword 'spaze@123'
-// storeFile file('./spaze.jks')
-// storePassword 'spaze@123'
-// }
+            release {
+keyAlias 'spaze'
+keyPassword 'spaze@123'
+storeFile file('./spaze.jks')
+storePassword 'spaze@123'
+}
     }
     buildTypes {
         debug {
@@ -163,7 +165,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            // signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -205,5 +207,3 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
